@@ -1,7 +1,7 @@
 === Open Graph By Tricks Panda ===
 Plugin URI: http://www.trickspanda.com
 Description: Easily add Open Graph tags to your WordPress website to make it ready to share on Facebook.
-Version: 1.0
+Version: 1.1
 Requires at least: 2.5
 Tested up to: 3.9
 Contributors: hardeepasrani
