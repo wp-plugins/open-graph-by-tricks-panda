@@ -3,7 +3,7 @@
 Plugin Name: Open Graph By Tricks Panda
 Plugin URI: http://www.trickspanda.com
 Description: Easily add Open Graph tags to your WordPress website to make it ready to share on Facebook.
-Version: 1.0
+Version: 1.1
 Author: Hardeep Asrani
 Author URI: http://www.hardeepasrani.com
 License: GPL v2 or later
@@ -37,6 +37,7 @@ function tricks_panda_og()
 	$site_type = get_option('tricks_panda_og_site_type');
 	$fb_page = get_option('tricks_panda_og_fb_page');
 	$app_id = get_option('tricks_panda_og_app_id');
+	$home_desc = get_option('tricks_panda_og_home_desc');
 	$og_locale = '<meta property="og:locale" content="' . get_locale() . '" />' . "\n";
 	$og_site_name = '<meta property="og:site_name" content="' . get_bloginfo('name') . '" />' . "\n";
 	if (is_home() || is_front_page()) {
@@ -47,9 +48,13 @@ function tricks_panda_og()
 		elseif (is_home()) {
 			$og_url = '<meta property="og:url" content="' . get_permalink() . '" />' . "\n";
 		}
-
 		$og_type = '<meta property="og:type" content="' . $site_type . '" />' . "\n";
-		$og_description = '<meta property="og:description" content="' . get_bloginfo('description') . '" />' . "\n";
+		if (!empty($home_desc)) {
+			$og_description = '<meta property="og:description" content="' . $home_desc . '" />' . "\n";
+		}
+		else {
+			$og_description = '<meta property="og:description" content="' . get_bloginfo('description') . '" />' . "\n";
+		}
 		$og_image = '<meta property="og:image" content="' . $default_image . '" />' . "\n";
 	}
 
@@ -66,7 +71,10 @@ function tricks_panda_og()
 		}
 
 		if (is_front_page()) {
-			if (class_exists('WPSEO_Frontend')) {
+			if (!empty($home_desc)) {
+				$og_description = '<meta property="og:description" content="' . $home_desc . '" />' . "\n";
+			}
+			elseif (class_exists('WPSEO_Frontend')) {
 				$tp_yoast = new WPSEO_Frontend();
 				$tp_yoast_description = $tp_yoast->metadesc(false);
 				$og_description = '<meta property="og:description" content="' . $tp_yoast_description . '" />' . "\n";
@@ -135,6 +143,9 @@ function tricks_panda_og()
 			$tp_description = trim(strip_tags(term_description()));
 			$og_description = '<meta property="og:description" content="' . $tp_description . '" />' . "\n";
 		}
+		elseif (!empty($home_desc)) {
+			$og_description = '<meta property="og:description" content="' . $home_desc . '" />' . "\n";
+		}
 		else {
 			$og_description = '<meta property="og:description" content="' . get_bloginfo('description') . '" />' . "\n";
 		}
@@ -149,6 +160,9 @@ function tricks_panda_og()
 		$og_type = '<meta property="og:type" content="object" />' . "\n";
 		if (get_the_author_meta('description')) {
 			$og_description = '<meta property="og:description" content="' . get_the_author_meta('description', $author_id) . '" />' . "\n";
+		}
+		elseif (!empty($home_desc)) {
+			$og_description = '<meta property="og:description" content="' . $home_desc . '" />' . "\n";
 		}
 		else {
 			$og_description = '<meta property="og:description" content="' . get_bloginfo('description') . '" />' . "\n";

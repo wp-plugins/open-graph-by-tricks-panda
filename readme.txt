@@ -62,3 +62,9 @@ I'm a teen WordPresser, so I don't have a Paypal account, so just simply support
 1. Open-Graph Settings Panel.
 
 2. Add Facebook Author URL From 'Users > Your Profile' Page.
+
+== Changelog ==
+
+= 1.4 =
+* Fixed a huge bug in option panel.
+* Added option to set homepage description from option panel.
