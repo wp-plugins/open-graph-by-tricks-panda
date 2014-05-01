@@ -65,6 +65,6 @@ I'm a teen WordPresser, so I don't have a Paypal account, so just simply support
 
 == Changelog ==
 
-= 1.4 =
+= 1.1 =
 * Fixed a huge bug in option panel.
 * Added option to set homepage description from option panel.
