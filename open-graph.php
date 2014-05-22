@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Open Graph By Tricks Panda
+Plugin Name: Open Graph
 Plugin URI: http://www.trickspanda.com
 Description: Easily add Open Graph tags to your WordPress website to make it ready to share on Facebook.
 Version: 1.1
