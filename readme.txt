@@ -3,7 +3,7 @@ Plugin URI: http://www.trickspanda.com
 Description: Easily add Open Graph tags to your WordPress website to make it ready to share on Facebook.
 Version: 1.1
 Requires at least: 2.5
-Tested up to: 4.0
+Tested up to: 4.1
 Contributors: hardeepasrani
 Author URI: http://www.hardeepasrani.com
 Tags: mata tags, open graph, opengraph, facebook, social, header
